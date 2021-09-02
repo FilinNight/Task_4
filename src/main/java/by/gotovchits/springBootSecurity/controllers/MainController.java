@@ -42,6 +42,8 @@ public class MainController {
 
         List<User> checkedItems = foo.getCheckedItems();
         for(User user : checkedItems) {
+            if(user.getUsername().equals(userService.getAuthenticationUser().getUsername()))
+                continue;
             userService.deleteById(user.getId());
         }
         return "redirect:/main";
